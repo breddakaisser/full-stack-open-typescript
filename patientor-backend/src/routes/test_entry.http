@@ -1,0 +1,10 @@
+POST http://localhost:3001/api/patients/1/entries
+Content-Type: application/json
+
+{
+  "description": "Annual physical follow-up assessment checkup.",
+  "date": "2026-11-05",
+  "specialist": "Dr. Sarah House",
+  "type": "HealthCheck",
+  "healthCheckRating": 0
+}

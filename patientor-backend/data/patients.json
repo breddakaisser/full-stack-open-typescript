@@ -1,0 +1,22 @@
+[
+  {
+    "id": "1",
+    "name": "John Test",
+    "dateOfBirth": "1990-01-01",
+    "ssn": "TEST-001",
+    "gender": "male",
+    "occupation": "Software Developer",
+    "entries": []
+  },
+  {
+    "id": "2",
+    "name": "Jane Test",
+    "dateOfBirth": "1985-05-15",
+    "ssn": "TEST-002",
+    "gender": "female",
+    "occupation": "Teacher",
+    "entries": []
+  }
+]
+
+
