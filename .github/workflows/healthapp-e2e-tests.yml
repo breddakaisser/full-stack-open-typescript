@@ -30,14 +30,8 @@ jobs:
         working-directory: ./healthapp-tests
         run: npx playwright install --with-deps
 
-      - name: Run Health app E2E tests
-        working-directory: ./healthapp-tests
-        run: npm test
-
-
       - name: Start server and run Health app E2E tests
         run: |
           npm --prefix ./healthapp start &
-          npx wait-on http://localhost:3000/hello
+          npx wait-on http://127.0.0.1:3000
           npm --prefix ./healthapp-tests test
-
