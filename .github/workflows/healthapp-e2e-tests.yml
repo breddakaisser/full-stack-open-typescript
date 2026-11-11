@@ -29,9 +29,11 @@ jobs:
       - name: Install Playwright Browsers
         working-directory: ./healthapp-tests
         run: npx playwright install --with-deps
-
-      - name: Start server and run Health app E2E tests
+        
+      - name: Build and start server, then run Health app E2E tests
         run: |
-          npm --prefix ./healthapp start &
-          npx wait-on http://127.0.0.1:3000
+          npm --prefix ./healthapp run tsc
+          npm --prefix ./healthapp start > server.log 2>&1 &
+          npx wait-on -t 30000 http://127.0.0 || (cat server.log && exit 1)
           npm --prefix ./healthapp-tests test
+
