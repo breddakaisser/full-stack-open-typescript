@@ -34,3 +34,10 @@ jobs:
         working-directory: ./healthapp-tests
         run: npm test
 
+
+      - name: Start server and run Health app E2E tests
+        run: |
+          npm --prefix ./healthapp start &
+          npx wait-on http://localhost:3000/hello
+          npm --prefix ./healthapp-tests test
+
