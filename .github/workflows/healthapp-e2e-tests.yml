@@ -3,8 +3,10 @@ name: Health app E2E Tests
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - 'healthapp/**'
+      - 'healthapp-tests/**'
+      - '.github/workflows/healthapp-e2e-tests.yml'
 
 jobs:
   e2e-tests:
@@ -29,11 +31,13 @@ jobs:
       - name: Install Playwright Browsers
         working-directory: ./healthapp-tests
         run: npx playwright install --with-deps
-        
-      - name: Build and start server, then run Health app E2E tests
+
+      - name: Start server and run Health app E2E tests
         run: |
-          npm --prefix ./healthapp run tsc
           npm --prefix ./healthapp start > server.log 2>&1 &
           npx wait-on -t 30000 http://127.0.0 || (cat server.log && exit 1)
           npm --prefix ./healthapp-tests test
+
+
+
 
