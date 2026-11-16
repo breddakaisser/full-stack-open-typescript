@@ -12,15 +12,24 @@ export const calculateBmi = (height: number, weight: number): string => {
   }
 };
 
-// 1. Get the numbers you type after the command
-const args = (globalThis as typeof globalThis & { process: { argv: string[] } }).process.argv;
-const heightInput = Number(args[2]);
-const weightInput = Number(args[3]);
+if (require.main === module) {
+  const args = process.argv;
+  const heightInput = Number(args[2]);
+  const weightInput = Number(args[3]);
 
-// 2. Make sure they are real numbers before calculating
-if (!isNaN(heightInput) && !isNaN(weightInput) && heightInput > 0 && weightInput > 0) {
-  console.log(calculateBmi(heightInput, weightInput));
-} else {
-  console.log('Error: Please provide valid numbers for height (cm) and weight (kg).');
-  console.log('Example command: node --experimental-strip-types bmiCalculator.ts 180 74');
+  if (
+    !isNaN(heightInput) &&
+    !isNaN(weightInput) &&
+    heightInput > 0 &&
+    weightInput > 0
+  ) {
+    console.log(calculateBmi(heightInput, weightInput));
+  } else {
+    console.log(
+      'Error: Please provide valid numbers for height (cm) and weight (kg).'
+    );
+    console.log(
+      'Example command: npx tsx bmiCalculator.ts 180 74'
+    );
+  }
 }
