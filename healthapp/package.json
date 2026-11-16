@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "healthapp",
   "version": "1.0.0",
   "description": "",
@@ -18,6 +19,7 @@
     "@typescript-eslint/parser": "^8.72.1",
     "eslint": "^9.39.5",
     "globals": "^17.14.0",
+    "tsx": "^4.23.15",
     "typescript-eslint": "^8.72.1"
   }
 }
