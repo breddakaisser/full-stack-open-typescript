@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Use Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
@@ -35,7 +35,7 @@ jobs:
       - name: Start server and run Health app E2E tests
         run: |
           npm --prefix ./healthapp start > server.log 2>&1 &
-          npx wait-on -t 30000 http://127.0.0 || (cat server.log && exit 1)
+          npx wait-on -t 30000 http://127.0.0.1:3000 || (cat server.log && exit 1)
           npm --prefix ./healthapp-tests test
 
 
