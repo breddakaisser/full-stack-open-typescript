@@ -2,7 +2,7 @@ name: Patientor E2E Tests
 
 on:
   push:
-    branches: [ xmain, xmaster ]
+    branches: [ main, master ]
 
 jobs:
   test:
@@ -18,23 +18,23 @@ jobs:
         node-version: '24'
 
     - name: Install patientor backend dependencies
-      working-directory: ./patientor/backend
+      working-directory: ./patientor-backend
       run: npm install --legacy-peer-deps
 
     - name: Start patientor backend
-      working-directory: ./patientor/backend
+      working-directory: ./patientor-backend
       run: npm start &
 
     - name: Install patientor frontend dependencies
-      working-directory: ./patientor/frontend
+      working-directory: ./patientor
       run: npm install --legacy-peer-deps
 
     - name: Build patientor frontend
-      working-directory: ./patientor/frontend
+      working-directory: ./patientor
       run: npm run build
 
     - name: Start patientor frontend preview
-      working-directory: ./patientor/frontend
+      working-directory: ./patientor
       run: npx vite preview --port 5173 &
 
     - name: Install e2e test dependencies
