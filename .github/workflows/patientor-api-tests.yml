@@ -3,8 +3,9 @@ name: Patientor API Tests
 on:
   push:
     branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    paths:
+      - 'patientor/**'
+      - '.github/workflows/patientor-api-tests.yml'
 
 jobs:
   test:
