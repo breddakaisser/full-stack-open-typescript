@@ -71,3 +71,9 @@ export type NewEntry =
   | Omit<HealthCheckEntry, 'id'>
   | Omit<HospitalEntry, 'id'>
   | Omit<OccupationalHealthcareEntry, 'id'>;
+
+type UnionOmit<T, K extends string | number | symbol> = T extends unknown
+  ? Omit<T, K>
+  : never;
+
+export type EntryWithoutId = UnionOmit<Entry, "id">;

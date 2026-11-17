@@ -1,5 +1,10 @@
-import { NewPatient, Gender, NewEntry, Diagnosis, HealthCheckRating } from './types';
+import { NewPatient, Gender, NewEntry, Diagnosis, HealthCheckRating, EntryWithoutId } from './types';
 
+export const newEntrySchema = {
+  parse: (object: unknown): EntryWithoutId => toNewEntry(object) as EntryWithoutId,
+};
+
+export const toNewEntryWithSchema = (object: unknown): EntryWithoutId => newEntrySchema.parse(object);
 const parseDiagnosisCodes = (object: unknown): Array<Diagnosis['code']> => {
   if (!object || typeof object !== 'object' || !('diagnosisCodes' in object)) {
     return [] as Array<Diagnosis['code']>;
